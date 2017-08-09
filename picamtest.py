@@ -8,25 +8,18 @@ import sys
 import time
 from picamera.array import PiRGBArray
 from picamera import PiCamera
+
 camera = PiCamera()
-camera.resolution = (1280,720)
+camera.resolution = (640,480)
 camera.framerate = 32
-rawCapture = PiRGBArray(camera, size=(1280,720))
+rawCapture = PiRGBArray(camera, size=(640,480))
 time.sleep(0.1)
 
-mystring = 'checkerboardcals'
-i = 0
-
 for frame in camera.capture_continuous(rawCapture, format = "bgr", use_video_port=True):
-    
-    time.sleep(1)
     image = frame.array
-    tempstring = mystring + str(i) + '.jpg'
-    print(tempstring)
-    cv2.imshow('im',image)
-    cv2.waitKey(250)
-    cv2.imwrite(tempstring,image)
+    cv2.imshow("Frame", image)
+    key = cv2.waitKey(1) & 0xFF
     rawCapture.truncate(0)
-    i += 1
-    if i==50:
+    
+    if key == ord("q"):
         break

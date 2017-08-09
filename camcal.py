@@ -3,7 +3,7 @@ import cv2
 import glob
 import yaml
 # termination criteria
-criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 24, 0.001) #CHANGE THE NUMBER 24 TO THE SIZE OF A CHECKERBOARD SQUARE IN MILLIMETERS
+criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 1, 0.001) #CHANGE THE NUMBER 24 TO THE SIZE OF A CHECKERBOARD SQUARE IN MILLIMETERS
 
 # prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(6,5,0)
 objp = np.zeros((6*9,3), np.float32)
